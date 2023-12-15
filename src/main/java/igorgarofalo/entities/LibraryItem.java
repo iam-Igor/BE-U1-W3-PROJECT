@@ -11,10 +11,16 @@ import java.time.LocalDate;
 @NamedQuery(name = "search_item_by_title", query = "SELECT i FROM LibraryItem i WHERE i.title LIKE :query")
 public abstract class LibraryItem {
 
+
+    //Ho scelto la strategia single table in quanto ritengo che il database sia molto pulito, con meno colonne possibile
+    //e anche perchè gli eventuali campi NULL scaturiti dalla strategy sarebbero stati pochi, quindi mi è sembrata una scelta
+    //sensata
+
     @Id
     @GeneratedValue
     private long isbn;
     private String title;
+
     @Column(name = "year_of_publication")
     private LocalDate yearOfPubl;
 

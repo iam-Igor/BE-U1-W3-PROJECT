@@ -10,6 +10,9 @@ import java.time.LocalDate;
 public class Loan {
 
 
+    //la filosofia che ho seguito per relazionare loan e user è stata che: un utente può avere più prestiti, ed un prestito può avere un solo utente
+    // per quanto riguarda gli Items della libreria, stesso ragionamento un item può avere più prestiti ma un prestito può essere associato ad un solo item
+
     @Id
     @GeneratedValue
     @Column(name = "loan_id")

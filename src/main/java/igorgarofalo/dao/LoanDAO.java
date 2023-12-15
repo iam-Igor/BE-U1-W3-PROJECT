@@ -62,6 +62,7 @@ public class LoanDAO {
 
     public void searchLoansInProgressByCardNumber(String uuid) {
         TypedQuery<Loan> loans = em.createNamedQuery("search_loans_in_progress", Loan.class);
+        //converto l'UUID in stringa e lo passo nel parametro del setter
         UUID uuidString = UUID.fromString(uuid);
         loans.setParameter("cardNumber", uuidString);
         if (loans.getResultList().size() == 0) {
