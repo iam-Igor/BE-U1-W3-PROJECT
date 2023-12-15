@@ -73,4 +73,12 @@ public class LIbraryItemDAO {
         books.setParameter("author_name", authorName);
         return books.getResultList();
     }
+
+
+    public List<LibraryItem> getItemsByTitle(String title) {
+        String searchTerm = title + "%";
+        TypedQuery<LibraryItem> items = em.createNamedQuery("search_item_by_title", LibraryItem.class);
+        items.setParameter("query", searchTerm);
+        return items.getResultList();
+    }
 }

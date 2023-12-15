@@ -83,6 +83,9 @@ public class Application {
         List<Book> filteredBooksByAuthor = ld.getBooksByAuthor("Kenny West");
         filteredBooksByAuthor.forEach(System.out::println);
 
+
+        //-------------RICERCA PER TITOLO O PARTE DI ESSO-------------------------
+
     }
 
 

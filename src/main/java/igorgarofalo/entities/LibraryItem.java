@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "library_type")
 @NamedQuery(name = "search_by_year_of_publiucation", query = "SELECT i FROM LibraryItem i WHERE YEAR(i.yearOfPubl) = :year")
+@NamedQuery(name = "search_item_by_title", query = "SELECT i FROM LibraryItem i WHERE i.title LIKE :query")
 public abstract class LibraryItem {
 
     @Id
