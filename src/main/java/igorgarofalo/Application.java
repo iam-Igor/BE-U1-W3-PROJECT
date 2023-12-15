@@ -57,8 +57,8 @@ public class Application {
         Magazine magazineFromDb = (Magazine) ld.findByISBN(14);
         Magazine magazine2FromDb = (Magazine) ld.findByISBN(28);
 
-        Loan loan1 = new Loan(userfromDb, bookFromDB, LocalDate.of(2023, 9, 10), LocalDate.of(2023, 10, 10));
-        Loan loan2 = new Loan(user2fromDb, book2FromDB, LocalDate.of(2023, 8, 1), LocalDate.of(2023, 8, 10));
+        Loan loan1 = new Loan(userfromDb, bookFromDB, LocalDate.of(2023, 9, 10), null);
+        Loan loan2 = new Loan(user2fromDb, book2FromDB, LocalDate.of(2023, 8, 1), null);
         Loan loan3 = new Loan(user3fromDb, book3FromDB, LocalDate.of(2021, 3, 6), LocalDate.of(2021, 4, 10));
         Loan loan4 = new Loan(user4fromDb, magazineFromDb, LocalDate.of(2020, 6, 6), LocalDate.of(2020, 8, 10));
         Loan loan5 = new Loan(user5fromDb, magazine2FromDb, LocalDate.of(2023, 12, 1), LocalDate.of(2023, 12, 10));
@@ -90,7 +90,12 @@ public class Application {
         List<LibraryItem> filteredByTitleName = ld.getItemsByTitle("The");
         filteredByTitleName.forEach(System.out::println);
 
-        
+
+        //-------------RICERCA DI PRESTITI ANCORA IN CORSO-------------------------
+        System.out.println("-------FOUND LOANS ACTUALLY IN PROGRESS------------------");
+        List<Loan> filteredLoansInProgress = lnd.searchLoansInProgress();
+        filteredLoansInProgress.forEach(System.out::println);
+
     }
 
 

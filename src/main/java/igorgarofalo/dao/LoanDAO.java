@@ -4,6 +4,8 @@ import igorgarofalo.entities.Loan;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class LoanDAO {
 
@@ -54,5 +56,11 @@ public class LoanDAO {
         }
 
 
+    }
+
+
+    public List<Loan> searchLoansInProgress() {
+        TypedQuery<Loan> loans = em.createNamedQuery("search_loans_in_progress", Loan.class);
+        return loans.getResultList();
     }
 }
