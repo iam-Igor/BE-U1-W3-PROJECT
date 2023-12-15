@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.UUID;
 
 public class LoanDAO {
 
@@ -59,8 +60,23 @@ public class LoanDAO {
     }
 
 
-    public List<Loan> searchLoansInProgress() {
+    public void searchLoansInProgressByCardNumber(String uuid) {
         TypedQuery<Loan> loans = em.createNamedQuery("search_loans_in_progress", Loan.class);
-        return loans.getResultList();
+        UUID uuidString = UUID.fromString(uuid);
+        loans.setParameter("cardNumber", uuidString);
+        if (loans.getResultList().size() == 0) {
+
+            System.out.println("No active loans for this card number!");
+        } else {
+            loans.getResultList().forEach(System.out::println);
+        }
+
     }
+
+    public List<Loan> searchExpiredLoans() {
+        TypedQuery<Loan> expiredLoans = em.createNamedQuery("search_expired_loans", Loan.class);
+        return expiredLoans.getResultList();
+    }
+
+
 }

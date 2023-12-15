@@ -92,9 +92,17 @@ public class Application {
 
 
         //-------------RICERCA DI PRESTITI ANCORA IN CORSO-------------------------
-        System.out.println("-------FOUND LOANS ACTUALLY IN PROGRESS------------------");
-        List<Loan> filteredLoansInProgress = lnd.searchLoansInProgress();
-        filteredLoansInProgress.forEach(System.out::println);
+        System.out.println("-------FOUND ACTIVE LOANS------------------");
+        lnd.searchLoansInProgressByCardNumber("46d2f498-089a-4e61-a8ce-c7fda69b80a7");
+
+        lnd.searchLoansInProgressByCardNumber("fa5554f8-825c-4053-9be0-ca51d63434db");
+
+
+        //-------------RICERCA DI PRESTITI SCADUTI-------------------------
+        System.out.println("-------FOUND EXPIRED LOANS------------------");
+        List<Loan> expiredLoans = lnd.searchExpiredLoans();
+        expiredLoans.forEach(System.out::println);
+
 
     }
 

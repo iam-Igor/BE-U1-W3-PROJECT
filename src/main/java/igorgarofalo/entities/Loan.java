@@ -5,8 +5,8 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "loan")
-@NamedQuery(name = "search_loans_in_progress", query = "SELECT l FROM Loan l WHERE l.loanReturnDate = null")
-@NamedQuery(name = "search_expired_loans", query = "SELECT l FROM Loan l WHERE ")
+@NamedQuery(name = "search_loans_in_progress", query = "SELECT l FROM Loan l WHERE l.user.cardNumber = :cardNumber AND l.loanReturnDate IS NULL")
+@NamedQuery(name = "search_expired_loans", query = "SELECT l FROM Loan l WHERE l.loanReturnDate > l.loanExpectedEndDate")
 public class Loan {
 
 
