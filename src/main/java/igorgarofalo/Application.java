@@ -86,6 +86,11 @@ public class Application {
 
         //-------------RICERCA PER TITOLO O PARTE DI ESSO-------------------------
 
+        System.out.println("-------FOUND ITEMS BY TITLE NAME------------------");
+        List<LibraryItem> filteredByTitleName = ld.getItemsByTitle("The");
+        filteredByTitleName.forEach(System.out::println);
+
+        
     }
 
 
